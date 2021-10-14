@@ -18,7 +18,8 @@ export class OrdinazioniWK extends Component {
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>Pizza</th>
+            <th width="10%">Pizza</th>
+            <th></th>
             <th>Quantità</th>
             <th>User</th>
           </tr>
@@ -26,6 +27,7 @@ export class OrdinazioniWK extends Component {
         <tbody>
             {ordini.map(ordine =>
                 <tr key={ordine.ID}>
+                    <td><img width="100" src={ordine.PathImg} /></td>
                     <td>{ordine.Pizza}</td>
                     <td>{ordine.Quantita}</td>
                     <td>{ordine.Utente}</td>
@@ -52,7 +54,9 @@ export class OrdinazioniWK extends Component {
 
   async populateOrdinazioniData() {
         const app = new Realm.App({ id: process.env.REACT_APP_REALM_APP_ID });
+
         const user = await app.logIn(Realm.Credentials.anonymous());
+        //const user = await app.logIn(Realm.Credentials.emailPassword("pizzapp@pizzapp.it","pizzapp"));
         const client = user.mongoClient('mongodb-atlas');
         const ordini = client.db(process.env.REACT_APP_REALM_APP_DB).collection('Ordine');
 
@@ -78,6 +82,7 @@ export class OrdinazioniWK extends Component {
                 if(j==0) ordine.Utente = utente.Username;
                 ordine.Quantita = righeOrdineFiltro[j].Quantita;
                 ordine.Pizza = pizza.Nome;
+                ordine.PathImg = pizza.PathImg;
                 listaOrdinazioni.push(ordine);
 
             }
