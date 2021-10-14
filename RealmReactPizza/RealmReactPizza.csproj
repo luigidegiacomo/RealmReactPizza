@@ -11,7 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="5.0.11" />
-    <PackageReference Include="Realm" Version="10.5.1" />
+    <PackageReference Include="Realm" Version="10.6.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
     <None Remove="Models\" />
     <None Remove="Utils\" />
     <None Remove="Services\" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
 
   <ItemGroup>

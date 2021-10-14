@@ -17,17 +17,19 @@ export class Ordinazioni extends Component {
             <table className='table table-striped' aria-labelledby="tabelLabel">
                 <thead>
                     <tr>
-                        <th>User</th>
-                        <th>Pizza</th>
+                        <th width="10%">Pizza</th>
+                        <th></th>
                         <th>Quantità</th>
+                        <th>User</th>
                     </tr>
                 </thead>
                 <tbody>
                     {ordini.map(ordine =>
                         <tr key={ordine.ID}>
-                            <td>{ordine.ordine.utente.username}</td>
-                            <td>{ordine.pizza.nome}</td>
-                            <td>{ordine.quantita}</td>      
+                            <td><img width="100" src={ordine.Pizza.PathImg}/></td>
+                            <td>{ordine.Pizza.Nome}</td>
+                            <td>{ordine.Quantita}</td>
+                            <td>{ordine.Ordine.Utente.Username}</td>
                         </tr>
                     )}
                 </tbody>
